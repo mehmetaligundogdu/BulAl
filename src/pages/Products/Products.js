@@ -1,26 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, Text, FlatList, ActivityIndicator} from 'react-native';
-import axios from 'axios';
 import {ProductCard} from '../../components/ProductCard';
+import {useFetch} from '../../hooks/useFetch';
 
+const url = 'https://fakestoreapi.com/products';
 const Products = () => {
-  const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  //Statelerimizi custom hooksta tutuyoruz.
+  // const [productList, setProductList] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const {productList, loading, error} = useFetch(url); //useFetch hook'umuzdan stateleri alıyoruz.
 
-  const fetchData = async () => {
-    try {
-      const {data} = await axios.get('https://fakestoreapi.com/products');
-      setProductList(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  //custom hooks'a taşıdık
+  // const fetchData = async () => {
+  //   try {
+  //     const {data} = await axios.get('https://fakestoreapi.com/products');
+  //     setProductList(data);
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setError(err.message);
+  //     setLoading(false);
+  //   }
+  // };
   const renderProduct = ({item}) => <ProductCard product={item} />;
 
   if (loading) {
