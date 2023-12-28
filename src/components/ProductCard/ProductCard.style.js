@@ -22,11 +22,13 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
+    fontSize: 15,
     padding: 5,
     fontWeight: 'bold',
   },
   price: {
     padding: 5,
+    fontWeight: 'bold',
     fontStyle: 'italic',
     textAlign: 'right',
   },
