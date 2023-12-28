@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import axios from 'axios';
-import Config from 'react-native-config';
+import {ProductCard} from '../../components/ProductCard';
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
@@ -10,17 +10,15 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const fetchData = () => {
-    axios
-      .get(Config.API_URL)
-      .then(res => setProductList(res))
-      .catch(err => console.log(err));
+  const fetchData = async () => {
+    const {data} = await axios.get('https://fakestoreapi.com/products');
+    setProductList(data);
   };
+  const renderProduct = ({item}) => <ProductCard product={item} />;
 
   return (
     <View>
-      <Text>Products {Config.API_URL}</Text>
-      <FlatList data={productList} renderItem={fetchData} />
+      <FlatList data={productList} renderItem={renderProduct} />
     </View>
   );
 };
