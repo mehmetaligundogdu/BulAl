@@ -5,7 +5,7 @@ import {useFetch} from '../../hooks/useFetch';
 import {Error, Loading, Welcome} from '../../components/Animations';
 
 const url = 'https://fakestoreapi.com/products';
-const Products = () => {
+const Products = ({navigation}) => {
   //Statelerimizi custom hooksta tutuyoruz.
   // const [productList, setProductList] = useState([]);
   // const [loading, setLoading] = useState(true);
@@ -24,11 +24,17 @@ const Products = () => {
   //     setLoading(false);
   //   }
   // };
+  const handleProductSelect = id => {
+    navigation.navigate('DetailsPage', {id});
+  };
+
+  const renderProduct = ({item}) => (
+    <ProductCard product={item} onSelect={() => handleProductSelect(item.id)} />
+  );
 
   if (loading || showWelcome) {
     return <Welcome />;
   }
-  const renderProduct = ({item}) => <ProductCard product={item} />;
 
   if (loading) {
     return <Loading />;
@@ -38,11 +44,7 @@ const Products = () => {
     return <Error />;
   }
 
-  return (
-    <View>
-      <FlatList data={productList} renderItem={renderProduct} />
-    </View>
-  );
+  return <FlatList data={productList} renderItem={renderProduct} />;
 };
 
 export {Products};
