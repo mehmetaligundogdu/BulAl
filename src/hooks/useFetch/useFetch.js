@@ -5,6 +5,7 @@ function useFetch(url) {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   const fetchData = async () => {
     //fetchData fonksiyonunu da useFetch hook'umuzun içine aldık.
@@ -17,13 +18,17 @@ function useFetch(url) {
       setLoading(false);
     }
   };
-
   useEffect(() => {
-    fetchData();
+    fetchData(); //sayfa her mount olduğunda fetchData fonksiyonunu çalıştır.
+    const timer = setTimeout(() => {
+      setShowWelcome(false);
+    }, 2000); // 2 saniye sonra welcome animasyonunu kapat
+
+    return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return {productList, loading, error}; //statete tuttuğumuz verileri return ediyoruz.
+  return {productList, loading, error, showWelcome}; //statete tuttuğumuz verileri return ediyoruz.
 }
 
 export {useFetch};

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {ProductCard} from '../../components/ProductCard';
 import {useFetch} from '../../hooks/useFetch';
+import {Error, Loading, Welcome} from '../../components/Animations';
 
 const url = 'https://fakestoreapi.com/products';
 const Products = () => {
@@ -10,7 +11,7 @@ const Products = () => {
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
 
-  const {productList, loading, error} = useFetch(url); //useFetch hook'umuzdan stateleri alıyoruz.
+  const {productList, loading, error, showWelcome} = useFetch(url); //useFetch hook'umuzdan stateleri alıyoruz.
 
   //custom hooks'a taşıdık
   // const fetchData = async () => {
@@ -23,14 +24,18 @@ const Products = () => {
   //     setLoading(false);
   //   }
   // };
+
+  if (loading || showWelcome) {
+    return <Welcome />;
+  }
   const renderProduct = ({item}) => <ProductCard product={item} />;
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#FFA500" />;
+    return <Loading />;
   }
 
   if (error) {
-    return <Text>{error}</Text>;
+    return <Error />;
   }
 
   return (
