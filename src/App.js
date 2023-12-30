@@ -24,7 +24,6 @@ const App = () => {
               fontSize: 24,
               fontWeight: 'bold',
             },
-            headerTintColor: 'black',
           }}
         />
         <Stack.Screen

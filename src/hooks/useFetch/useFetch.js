@@ -18,11 +18,12 @@ function useFetch(url) {
       setLoading(false);
     }
   };
+  //sayfa açılana kadar (1.2 sn) welcome animasyonunu göster.
   useEffect(() => {
     fetchData(); //sayfa her mount olduğunda fetchData fonksiyonunu çalıştır.
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, 2000); // 2 saniye sonra welcome animasyonunu kapat
+    }, 1200); // 1.2 saniye sonra welcome animasyonunu kapat
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,21 +1,36 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-const {width} = Dimensions.get('window');
+const deviceSize = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    marginTop: 20,
   },
   body_container: {
+    margin: 10,
+    borderRadius: 20,
+    backgroundColor: '#FFA500',
     padding: 10,
   },
   image: {
-    width: width,
-    height: width / 3,
+    width: deviceSize.width,
+    height: deviceSize.height / 3,
     resizeMode: 'contain',
   },
   title: {
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  detail: {},
-  price: {},
+  detail: {
+    fontSize: 15,
+    padding: 5,
+  },
+  price: {
+    fontSize: 20,
+    padding: 5,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    fontStyle: 'italic',
+  },
 });

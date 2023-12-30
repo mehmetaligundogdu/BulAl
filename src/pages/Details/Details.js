@@ -7,26 +7,22 @@ import {Error, Loading, Welcome} from '../../components/Animations';
 const url = 'https://fakestoreapi.com/products';
 
 const Details = ({route}) => {
-  const {id} = route.params;
-  const {loading, error, data, showWelcome} = useFetch(`${url}/${id}`);
-  if (loading || showWelcome) {
-    return <Welcome />;
-  }
+  const {id} = route.params; //route.params içindeki id'yi al.
+  const {loading, error, productList, showWelcome} = useFetch(`${url}/${id}`); //aldığın id'yi kullan.
 
   if (loading) {
     return <Loading />;
   }
-
   if (error) {
     return <Error />;
   }
   return (
     <View style={styles.container}>
-      <Image source={{uri: 'data.image'}} style={styles.image} />
+      <Image source={{uri: productList.image}} style={styles.image} />
       <View style={styles.body_container}>
-        <Text style={styles.title}>{data.title}</Text>
-        <Text style={styles.detail}>{data.description}</Text>
-        <Text style={styles.price}>{data.price}</Text>
+        <Text style={styles.title}>{productList.title}</Text>
+        <Text style={styles.detail}>{productList.description}</Text>
+        <Text style={styles.price}>{productList.price} ₺</Text>
       </View>
     </View>
   );
