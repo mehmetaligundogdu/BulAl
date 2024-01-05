@@ -3,12 +3,12 @@ import {View, Text, Image} from 'react-native';
 import {styles} from './Details.style';
 import {useFetch} from '../../hooks/useFetch';
 
-import {Error, Loading, Welcome} from '../../components/Animations';
+import {Error, Loading} from '../../components/Animations';
 const url = 'https://fakestoreapi.com/products';
 
 const Details = ({route}) => {
   const {id} = route.params; //route.params içindeki id'yi al.
-  const {loading, error, productList, showWelcome} = useFetch(`${url}/${id}`); //aldığın id'yi kullan.
+  const {loading, error, productList} = useFetch(`${url}/${id}`); //aldığın id'yi kullan.
 
   if (loading) {
     return <Loading />;
