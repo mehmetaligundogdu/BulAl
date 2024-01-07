@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function useFetch(url) {
+  //useFetch hook'umuzun görevi, endpointten istenen verileri çekmek ve bu verileri state olarak tutmak, bize return etmek.
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

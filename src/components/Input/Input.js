@@ -8,6 +8,7 @@ const Input = ({placeholder, value, onType, iconName, isSecure}) => {
     <View style={styles.container}>
       <Icon name={iconName} size={30} color="#febb75" />
       <TextInput
+        autoCapitalize="none" //Kullanıcı klavyesinde, ilk harfin defaultta büyük olmasını engeller.
         style={styles.input}
         placeholder={placeholder}
         onChangeText={onType}

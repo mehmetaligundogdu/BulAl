@@ -1,12 +1,30 @@
 import React from 'react';
-import {SafeAreaView, View, Text, Image} from 'react-native';
+import {SafeAreaView, View, Image, Alert} from 'react-native';
 import {Formik} from 'formik';
 import {Input} from '../../components/Input';
 import {Button} from '../../components/Button';
 
 import {styles} from './Login.style';
+import {usePost} from '../../hooks/usePost';
 
-const Login = () => {
+const Login = ({navigation}) => {
+  const {data, loading, error, post} = usePost();
+
+  function handleLogin(values) {
+    post('https://fakestoreapi.com/auth/login', values);
+  }
+  if (error) {
+    Alert.alert('BulAI', 'Bir Hata Oluştu!');
+  }
+  if (data) {
+    if (data.status === 'error') {
+      Alert.alert('BulAI', 'Kullanıcı Bulunamadı!');
+    } else {
+      navigation.navigate('ProductsPage');
+    }
+    console.log(data);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
@@ -17,7 +35,7 @@ const Login = () => {
           username: '',
           password: '',
         }}
-        onSubmit={formValues => console.log(formValues)}>
+        onSubmit={handleLogin}>
         {({handleChange, handleSubmit, values}) => (
           <View style={styles.bodyContainer}>
             <Input
@@ -34,7 +52,7 @@ const Login = () => {
               iconName="key-chain"
               isSecure
             />
-            <Button text="Giriş Yap" onPress={handleSubmit} />
+            <Button text="Giriş Yap" onPress={handleSubmit} loading={loading} />
           </View>
         )}
       </Formik>
