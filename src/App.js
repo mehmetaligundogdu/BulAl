@@ -1,11 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {Products} from './pages/Products';
 import {Details} from './pages/Details';
 import {Login} from './pages/Login';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {Loading} from './components/Animations';
 
 const Stack = createNativeStackNavigator();
@@ -13,6 +14,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   const userSession = useSelector(s => s.user);
   const isAuthLoading = useSelector(s => s.authLoading);
+  const dispatch = useDispatch();
 
   return (
     <NavigationContainer>
@@ -44,6 +46,14 @@ const App = () => {
                   fontSize: 24,
                   fontWeight: 'bold',
                 },
+                headerRight: () => (
+                  <Icon
+                    name="logout"
+                    size={30}
+                    color="black"
+                    onPress={() => dispatch({type: 'LOG_OUT'})}
+                  />
+                ),
               }}
             />
             <Stack.Screen
