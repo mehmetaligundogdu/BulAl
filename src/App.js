@@ -50,7 +50,7 @@ const App = () => {
                   <Icon
                     name="logout-variant"
                     size={30}
-                    color="white"
+                    color="black"
                     onPress={() => dispatch({type: 'LOG_OUT'})}
                   />
                 ),
