@@ -10,7 +10,7 @@ const Button = ({text, onPress, loading}) => {
       disabled={loading}>
       {/*loading döndüğünde(true), butonun basılabilir durumunu ortadan kaldıralım ki, kullanıcı birden fazla istek atmasın */}
       {loading ? (
-        <ActivityIndicator size="small" color="#A7D8F4" />
+        <ActivityIndicator size="large" color="#A7D8F4" />
       ) : (
         <Text style={styles.title}>{text}</Text>
       )}

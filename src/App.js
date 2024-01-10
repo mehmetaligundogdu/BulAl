@@ -48,9 +48,9 @@ const App = () => {
                 },
                 headerRight: () => (
                   <Icon
-                    name="logout"
+                    name="logout-variant"
                     size={30}
-                    color="black"
+                    color="white"
                     onPress={() => dispatch({type: 'LOG_OUT'})}
                   />
                 ),
