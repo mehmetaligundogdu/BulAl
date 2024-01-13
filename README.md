@@ -3,6 +3,7 @@
 
 BulAI, hazır bir store API'den kullanıcı ve ürün bilgilerini alarak kullanıcıların verimli bir şekilde alışveriş yapmalarını sağlayan bir React Native uygulamasıdır.
 
+
 ## Özellikler
 
 - 👤  **Kullanıcı Girişi:** Formik ile kullanıcı adı, şifre ve form yönetimi.
@@ -56,5 +57,7 @@ https://www.linkedin.com/in/mehmetaligundogdu/
 gundogdu.102@outlook.com 
 
 adresinden bana ulaşabilirsiniz.
+
+https://github.com/mehmetaligundogdu/BulAl/assets/104725944/c17e6c56-9265-4aff-9072-9a92ed9aa022
 
   
