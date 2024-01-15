@@ -15,7 +15,7 @@ BulAI, hazır bir store API'den kullanıcı ve ürün bilgilerini alarak kullan�
 
 ## Kurulum
 
-Projeyi yerel ortamınıza klonlamak için aşağıdaki adımları izleyin:
+Projeyi yerel ortamınıza klonlama için aşağıdaki adımları izleyin:
 
 ```bash
 git clone https://github.com/mehmetaligundogdu/BulAl
