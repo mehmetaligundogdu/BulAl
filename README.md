@@ -56,6 +56,8 @@ https://www.linkedin.com/in/mehmetaligundogdu/
 
 gundogdu.102@outlook.com 
 
+https://medium.com/@mali_derler
+
 adresinden bana ulaşabilirsiniz.
 
 https://github.com/mehmetaligundogdu/BulAl/assets/104725944/c17e6c56-9265-4aff-9072-9a92ed9aa022
